@@ -1,10 +1,38 @@
-export function calculateWinner(size) {
-    const squares = Array(size * size).fill(null).map((e, i) => i);
-    const horizontals = sliceChunksHorizontally([...squares], size);
-    const verticals = sliceChunksVertically([...squares], size);
-    const diagonals = getDiagonals([...squares], size);
-    const winningPlays = [...horizontals, ...verticals, ...diagonals];
+export function calculateWinner(squares, size) {
+    const tempSquares = Array(size * size).fill(null).map((e, i) => i);
+    const horizontals = sliceChunksHorizontally([...tempSquares], size);
+    const verticals = sliceChunksVertically([...tempSquares], size);
+    const diagonals = getDiagonals([...tempSquares], size);
+    const winningPatterns = [...horizontals, ...verticals, ...diagonals];
 
+    for (let i = 0; i < winningPatterns.length; i++) {
+        const [a, b, c, d, e, f, g, h] = winningPatterns[i];
+
+        switch (size) {
+            case 3:
+                if (
+                    squares[a] &&
+                    squares[a] === squares[b] &&
+                    squares[a] === squares[c]
+                ) {
+                    return true;
+                }
+                break;
+            case 4:
+                if (
+                    squares[a] &&
+                    squares[a] === squares[b] &&
+                    squares[a] === squares[c] &&
+                    squares[a] === squares[d]
+                ) {
+                    return true;
+                }
+                break;
+            default:
+        }
+    }
+
+    return false;
 }
 
 export function getDiagonals(arr, size) {
