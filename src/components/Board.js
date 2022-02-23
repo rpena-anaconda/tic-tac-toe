@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import Square from './Square';
+import { calculateWinner } from '../helpers';
 
 // type PlayableValues = 'x' | 'o'
 
 const SIZE = 3;
 
 function Board() {
+    console.log(calculateWinner(SIZE));
     const [squares, setSquares] = useState(Array(SIZE * SIZE).fill(null))
     const [isX, setIsX] = useState(true);
 
