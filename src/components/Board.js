@@ -24,8 +24,13 @@ function Board() {
     console.log('squares', squares)
     return (
         <>
-            <p>Current Play: {isX ? 'X' : 'O'}</p>
+            <div className='mb-4'>
+                <p>
+                    <span className='text-xl mr-1'>Current Play:</span> <span className='text-2xl'>{isX ? 'X' : 'O'}</span>
+                </p>
+            </div>
 
+            <hr />
             <div className="grid grid-cols-3 gap-3">
                 {squares.map((e, i) => (
                     <Square
