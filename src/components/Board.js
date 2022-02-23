@@ -12,8 +12,14 @@ function Board() {
     const [squares, setSquares] = useState(freshTable(size))
     const [isX, setIsX] = useState(true);
 
-    const handleUpdateSize = (udpatedSize) => {
-        setSize(udpatedSize);
+    const handleUpdateSize = (updatedSize) => {
+        if (typeof updatedSize === 'string' && updatedSize.length === 0) {
+            setSize(updatedSize);
+        } else {
+            setSize(parseInt(updatedSize));
+        }
+
+        setSquares(freshTable(updatedSize));
     };
 
     const processClickEvent = (placement) => {
@@ -27,6 +33,7 @@ function Board() {
         const winner = calculateWinner(updatedSquares, size);
         if (winner) {
             setIsWinner(true)
+            return;
         }
 
         // Update Playable Value
@@ -54,7 +61,7 @@ function Board() {
                     <Winner restartGame={restartGame} />
                 }
 
-                <div className="grid grid-cols-3 gap-3">
+                <div className={`grid my-grid-${size}`}>
                     {squares.map((e, i) => (
                         <Square
                             key={i}
