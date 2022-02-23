@@ -36,6 +36,56 @@ export function calculateWinner(squares, size) {
                     return true;
                 }
                 break;
+            case 5:
+                if (
+                    squares[a] &&
+                    squares[a] === squares[b] &&
+                    squares[a] === squares[c] &&
+                    squares[a] === squares[d] &&
+                    squares[a] === squares[e]
+                ) {
+                    return true;
+                }
+                break;
+            case 6:
+                if (
+                    squares[a] &&
+                    squares[a] === squares[b] &&
+                    squares[a] === squares[c] &&
+                    squares[a] === squares[d] &&
+                    squares[a] === squares[e] &&
+                    squares[a] === squares[f]
+                ) {
+                    return true;
+                }
+                break;
+            case 7:
+                if (
+                    squares[a] &&
+                    squares[a] === squares[b] &&
+                    squares[a] === squares[c] &&
+                    squares[a] === squares[d] &&
+                    squares[a] === squares[e] &&
+                    squares[a] === squares[f] &&
+                    squares[a] === squares[g]
+                ) {
+                    return true;
+                }
+                break;
+            case 8:
+                if (
+                    squares[a] &&
+                    squares[a] === squares[b] &&
+                    squares[a] === squares[c] &&
+                    squares[a] === squares[d] &&
+                    squares[a] === squares[e] &&
+                    squares[a] === squares[f] &&
+                    squares[a] === squares[g] &&
+                    squares[a] === squares[h]
+                ) {
+                    return true;
+                }
+                break;
             default:
         }
     }

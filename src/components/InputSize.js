@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 
 function InputSize({ size, updateSize }) {
     const handleInputChange = (e) => {
@@ -11,7 +11,7 @@ function InputSize({ size, updateSize }) {
         <div>
             <span className='text-xl mr-1'>Size:</span>
             <input
-                type="text"
+                type="number"
                 name="size"
                 className='w-10 text-2xl'
                 value={size}
