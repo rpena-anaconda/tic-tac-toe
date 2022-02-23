@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import Square from './Square';
 import InputSize from './InputSize';
-import { calculateWinner } from '../helpers';
+import { calculateWinner, freshTable } from '../helpers';
+import Winner from './Winner'
 
 // type PlayableValues = 'x' | 'o'
 
 function Board() {
     const [isWinner, setIsWinner] = useState(false);
     const [size, setSize] = useState(3);
-    const [squares, setSquares] = useState(Array(size * size).fill(null))
+    const [squares, setSquares] = useState(freshTable(size))
     const [isX, setIsX] = useState(true);
 
     const handleUpdateSize = (udpatedSize) => {
@@ -32,6 +33,12 @@ function Board() {
         setIsX(!isX);
     };
 
+    const restartGame = () => {
+        setIsWinner(false);
+        setSquares(freshTable(size));
+        setIsX(true);
+    };
+
     return (
         <>
             <div className='mb-4 flex justify-between'>
@@ -44,9 +51,7 @@ function Board() {
 
             <div className='board relative'>
                 {isWinner &&
-                    <div className='absolute w-full h-full bg-gray-50'>
-                        <div className='text-3xl text-center relative top-1/4'>Winner!</div>
-                    </div>
+                    <Winner restartGame={restartGame} />
                 }
 
                 <div className="grid grid-cols-3 gap-3">

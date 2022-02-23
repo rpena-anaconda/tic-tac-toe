@@ -1,5 +1,13 @@
+export function freshTable(size) {
+    return Array(size * size).fill(null);
+}
+
+export function addTableNumbers(squares) {
+    return [...squares].map((e, i) => i);
+}
+
 export function calculateWinner(squares, size) {
-    const tempSquares = Array(size * size).fill(null).map((e, i) => i);
+    const tempSquares = addTableNumbers(freshTable(size));
     const horizontals = sliceChunksHorizontally([...tempSquares], size);
     const verticals = sliceChunksVertically([...tempSquares], size);
     const diagonals = getDiagonals([...tempSquares], size);
